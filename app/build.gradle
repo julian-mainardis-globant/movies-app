@@ -31,7 +31,7 @@ android {
     }
 }
 
-//preBuild.dependsOn ktlint
+preBuild.dependsOn ktlintFormat
 
 dependencies {
     implementation project(path: ':domain')

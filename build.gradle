@@ -4,6 +4,14 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
 }
 
+allprojects {
+    apply from: "$rootDir/ktlint.gradle"
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
