@@ -4,7 +4,7 @@ import android.animation.Animator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moviesapp.databinding.SplashScreenBinding
-import com.example.moviesapp.mvvm.viewmodel.SplashScreenViewModel
+import com.example.moviesapp.viewmodel.SplashScreenViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

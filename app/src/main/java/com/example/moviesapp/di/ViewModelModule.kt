@@ -1,6 +1,6 @@
 package com.example.moviesapp.di
 
-import com.example.moviesapp.mvvm.viewmodel.SplashScreenViewModel
+import com.example.moviesapp.viewmodel.SplashScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

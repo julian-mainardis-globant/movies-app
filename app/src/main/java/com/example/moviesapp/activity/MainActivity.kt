@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
     companion object {
         fun newInstance(context: Context): Intent = Intent(context, MainActivity::class.java)
     }
