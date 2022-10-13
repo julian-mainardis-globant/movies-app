@@ -1,8 +1,7 @@
 package com.example.moviesapp.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.moviesapp.testObserver
-import org.junit.Assert.assertEquals
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -24,26 +23,12 @@ class MainActivityViewModelTest {
     }
 
     @Test
-    fun `show loading state when there is connection`() {
-        val moviesLiveData = mainActivityViewModel.getMovieState().testObserver()
-        mainActivityViewModel.getMovies(true)
-        assertEquals(
-            MainActivityViewModel.MoviesState.LOADING,
-            moviesLiveData.observedValues[0]?.mState
-        )
-    }
+    fun `check the initialization of the app`() {
+        mainActivityViewModel.initialize()
 
-    @Test
-    fun `show empty state when there is no connection and local database is empty`() {
-        val moviesLiveData = mainActivityViewModel.getMovieState().testObserver()
-        mainActivityViewModel.getMovies(false)
-        assertEquals(
-            MainActivityViewModel.MoviesState.LOADING,
-            moviesLiveData.observedValues[0]?.mState
-        )
-        assertEquals(
-            MainActivityViewModel.MoviesState.EMPTY_DATABASE,
-            moviesLiveData.observedValues[1]?.mState
+        Assert.assertEquals(
+            MainActivityViewModel.MainActivityState.INITIALIZED,
+            mainActivityViewModel.getMainActivityState().value?.state
         )
     }
 }

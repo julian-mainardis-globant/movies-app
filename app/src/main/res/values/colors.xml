@@ -7,6 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="app_primary_color">#0857A0</color>
-    <color name="app_secondary_color">#66FFF2</color>
+    <color name="app_primary_color">#FF1D203F</color>
+    <color name="app_secondary_color">#FF252A53</color>
+    <color name="status_bar_color">#3E3A92</color>
+    <color name="tab_color">#B3FFFFFF</color>
+    <color name="tab_color_pressed">#B3289DA1</color>
 </resources>

@@ -16,7 +16,7 @@ class SplashScreenActivity : AppCompatActivity(), KoinComponent {
         super.onCreate(savedInstanceState)
         binding = SplashScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.splashScreenState.observe({ lifecycle }, ::changingState)
+        viewModel.getSplashState().observe({ lifecycle }, ::changingState)
         viewModel.startAnimation()
     }
 

@@ -3,29 +3,21 @@ package com.example.moviesapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviesapp.utils.Constants.EMPTY_DATABASE
 
-class MainActivityViewModel() : ViewModel() {
+class MainActivityViewModel : ViewModel() {
 
-    private lateinit var result: String
-    private var moviesState = MutableLiveData<MoviesData>()
+    private var mainActivityState = MutableLiveData<MainActivityData>()
+    fun getMainActivityState(): LiveData<MainActivityData> = mainActivityState
 
-    fun getMovieState(): LiveData<MoviesData> = moviesState
-
-    fun getMovies(connect: Boolean) {
-        result = EMPTY_DATABASE
-        moviesState.value = MoviesData(MoviesState.LOADING)
-        if (!connect) {
-            moviesState.value = MoviesData(MoviesState.EMPTY_DATABASE)
-        }
+    fun initialize() {
+        mainActivityState.value = MainActivityData(MainActivityState.INITIALIZED)
     }
 
-    data class MoviesData(
-        val mState: MoviesState
+    data class MainActivityData(
+        val state: MainActivityState
     )
 
-    enum class MoviesState {
-        LOADING,
-        EMPTY_DATABASE
+    enum class MainActivityState {
+        INITIALIZED
     }
 }

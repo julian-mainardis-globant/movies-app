@@ -1,7 +1,6 @@
-package com.example.marvelapp.viewmodel
+package com.example.moviesapp.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.moviesapp.viewmodel.SplashScreenViewModel
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
@@ -22,7 +21,7 @@ class SplashScreenViewModelTest {
 
         Assert.assertEquals(
             SplashScreenViewModel.SplashScreenState.START,
-            splashViewModel.splashScreenState.value?.state
+            splashViewModel.getSplashState().value?.state
         )
     }
 
@@ -32,7 +31,7 @@ class SplashScreenViewModelTest {
 
         Assert.assertEquals(
             SplashScreenViewModel.SplashScreenState.DONE,
-            splashViewModel.splashScreenState.value?.state
+            splashViewModel.getSplashState().value?.state
         )
     }
 }
