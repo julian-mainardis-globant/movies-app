@@ -5,12 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moviesapp.R
 import com.example.moviesapp.adapter.PageAdapter
 import com.example.moviesapp.databinding.ActivityMainBinding
-import com.example.moviesapp.utils.Connection
 import com.example.moviesapp.viewmodel.MainActivityViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 import org.koin.core.component.KoinComponent
@@ -20,40 +18,28 @@ class MainActivity : AppCompatActivity(), KoinComponent {
 
     private val viewModel: MainActivityViewModel by inject()
     private lateinit var binding: ActivityMainBinding
-    private lateinit var pageAdapter: PageAdapter
-    private var isConnected = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isConnected = Connection.isOnline(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        binding.viewPager.adapter = PageAdapter(this)
-        pageAdapter = binding.viewPager.adapter as PageAdapter
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = pageAdapter.getPageTitle(position)
-        }.attach()
-
-        viewModel.getMovies(isConnected)
-        viewModel.getMovieState().observe({ lifecycle }, ::updateUI)
+        viewModel.getMainActivityState().observe({ lifecycle }, ::updateUI)
+        viewModel.initialize()
     }
 
-    private fun updateUI(moviesData: MainActivityViewModel.MoviesData) {
-        when (moviesData.mState) {
-            MainActivityViewModel.MoviesState.LOADING -> {
-                showLoader()
-            }
-            MainActivityViewModel.MoviesState.EMPTY_DATABASE -> showEmptyState()
+    private fun updateUI(mainActivityData: MainActivityViewModel.MainActivityData) {
+        when (mainActivityData.state) {
+            MainActivityViewModel.MainActivityState.INITIALIZED -> initialize()
         }
     }
 
-    private fun showLoader() {
-        // this method will be implemented when we merge my work with Juli's
-    }
-
-    private fun showEmptyState() {
-        binding.emptyState.visibility = View.VISIBLE
+    private fun initialize() {
+        binding.viewPager.adapter = PageAdapter(this)
+        val pageAdapter = binding.viewPager.adapter as PageAdapter
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.setIcon(arrayOf(R.drawable.ic_now_playing, R.drawable.ic_top_rated, R.drawable.ic_upcoming)[position])
+            tab.text = pageAdapter.getPageTitle(position)
+        }.attach()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

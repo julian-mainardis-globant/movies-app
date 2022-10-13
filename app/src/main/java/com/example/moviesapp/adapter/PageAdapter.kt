@@ -5,12 +5,12 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.moviesapp.fragment.NowPlayingFragment
 import com.example.moviesapp.fragment.TopRatedFragment
 import com.example.moviesapp.fragment.UpcomingFragment
-import com.example.moviesapp.utils.Constants.FIRST_POSITION
-import com.example.moviesapp.utils.Constants.NUMBER_OF_PAGES
-import com.example.moviesapp.utils.Constants.SECOND_POSITION
-import com.example.moviesapp.utils.Constants.TAB_NOW_PLAYING
-import com.example.moviesapp.utils.Constants.TAB_TOP_RATED
-import com.example.moviesapp.utils.Constants.TAB_UPCOMING
+import com.example.moviesapp.util.Constants.FIRST_POSITION
+import com.example.moviesapp.util.Constants.NUMBER_OF_PAGES
+import com.example.moviesapp.util.Constants.SECOND_POSITION
+import com.example.moviesapp.util.Constants.TAB_NOW_PLAYING
+import com.example.moviesapp.util.Constants.TAB_TOP_RATED
+import com.example.moviesapp.util.Constants.TAB_UPCOMING
 
 class PageAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
 
