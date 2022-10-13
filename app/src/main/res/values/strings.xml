@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">moviesApp</string>
+    <string name="app_name">Movies DB</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_title">Search</string>
 </resources>
