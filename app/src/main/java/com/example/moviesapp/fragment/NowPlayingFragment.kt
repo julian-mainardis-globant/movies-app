@@ -44,15 +44,15 @@ class NowPlayingFragment : Fragment() {
 
     private fun showMovies(movieList: List<Movie>) {
         binding.nowPlayingLoader.visibility = View.GONE
-        binding.imgMain.visibility = View.GONE
+        binding.nowPlayingImgEmptyState.visibility = View.GONE
         binding.nowPlayingRecyclerView.layoutManager = GridLayoutManager(context, Constants.COLUMNS_AMOUNT)
         binding.nowPlayingRecyclerView.adapter = NowPlayingAdapter(movieList)
     }
 
     private fun showError() {
         binding.nowPlayingLoader.visibility = View.GONE
-        binding.textViewMain.setText(R.string.empty_state_error)
-        binding.imgMain.setImageResource(R.drawable.no_recording)
+        binding.nowPlayingTextViewEmptyState.setText(R.string.empty_state_error)
+        binding.nowPlayingImgEmptyState.setImageResource(R.drawable.no_recording)
     }
 
     private fun showLoading() {

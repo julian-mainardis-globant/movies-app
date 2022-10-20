@@ -9,17 +9,17 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.domain.entity.Movie
 import com.example.moviesapp.R
-import com.example.moviesapp.databinding.CardViewNowPlayingBinding
+import com.example.moviesapp.databinding.CardViewTopRatedBinding
 import com.example.moviesapp.util.Constants
 
-class NowPlayingAdapter(
+class TopRatedAdapter(
     private val movies: List<Movie>
-) : RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<TopRatedAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.card_view_now_playing,
+                R.layout.card_view_top_rated,
                 parent,
                 false
             )
@@ -33,14 +33,15 @@ class NowPlayingAdapter(
     override fun getItemCount(): Int = movies.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = CardViewNowPlayingBinding.bind(itemView)
+        private val binding = CardViewTopRatedBinding.bind(itemView)
         fun bind(item: Movie) {
             binding.apply {
-                this.cardViewMovieNameNowPlaying.text = item.title
+                this.cardViewMovieNameTopRated.text = item.title
                 Glide.with(itemView.context)
                     .load(item.imgURL)
                     .apply(RequestOptions.bitmapTransform(RoundedCorners(Constants.IMAGE_RADIUS)))
-                    .into(this.cardViewImageMovieNowPlaying)
+                    .into(this.cardViewImageMovieTopRated)
+                this.cardViewVoteAverageTopRated.text = item.voteAverage.toString()
             }
         }
     }

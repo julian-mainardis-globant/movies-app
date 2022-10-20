@@ -2,8 +2,9 @@ package com.example.domain.database
 
 import com.example.domain.entity.Movie
 import com.example.domain.util.Result
+import com.example.domain.util.TabsEnum
 
 interface MovieRepository {
-    fun getNowPlayingMovies(): Result<List<Movie>>
-    fun updateNowPlayingMovies(movies: List<Movie>)
+    fun getMoviesByTab(tab: TabsEnum): Result<List<Movie>>
+    fun updateMovies(movies: List<Movie>)
 }
