@@ -5,4 +5,5 @@ import com.example.domain.util.Result
 
 interface MovieService {
     fun getNowPlayingMovies(): Result<List<Movie>>
+    fun getTopRatedMovies(): Result<List<Movie>>
 }

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/now_playing_image"
+        android:id="@+id/card_view_image_movie_now_playing"
         android:layout_width="@dimen/cardview_image_size"
         android:layout_height="@dimen/cardview_image_size"
         android:layout_marginTop="@dimen/margin_top_img_card_view"
@@ -15,12 +15,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/now_playing_movie_name"
+        android:id="@+id/card_view_movie_name_now_playing"
         style="@style/text_view_card_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/now_playing_image" />
+        app:layout_constraintTop_toBottomOf="@id/card_view_image_movie_now_playing" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,12 @@
     <dimen name="margin_top_img_card_view">10dp</dimen>
     <dimen name="padding_text_view_card_view">10dp</dimen>
     <dimen name="margin_img_main">60dp</dimen>
-    <dimen name="size_img_main">200dp</dimen>
-    <dimen name="margin_top_img_main">30dp</dimen>
+    <dimen name="size_img_empty_state">200dp</dimen>
+    <dimen name="margin_top_img_empty_state">30dp</dimen>
     <dimen name="tab_text_size">12sp</dimen>
     <dimen name="title_text_size">22sp</dimen>
+    <dimen name="padding_top_rated">10dp</dimen>
+    <dimen name="margin_cards_top_rated">10dp</dimen>
+    <dimen name="top_rated_radius">10dp</dimen>
+    <dimen name="margin_vote_average">10dp</dimen>
 </resources>

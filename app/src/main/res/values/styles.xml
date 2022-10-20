@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <style name="tab_layout">
         <item name="android:textSize">@dimen/tab_text_size</item>
         <item name="android:textStyle">bold</item>
@@ -14,7 +13,7 @@
         <item name="android:textSize">@dimen/title_text_size</item>
     </style>
 
-    <style name="text_view_now_playing">
+    <style name="text_view_empty_state">
         <item name="android:layout_marginTop">@dimen/margin_img_main</item>
         <item name="android:textColor">@color/white</item>
     </style>

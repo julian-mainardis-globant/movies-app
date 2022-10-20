@@ -6,6 +6,7 @@ import com.example.domain.service.MovieService
 import com.example.domain.usecase.GetNowPlayingMoviesUseCase
 import com.example.domain.usecase.GetNowPlayingMoviesUseCaseImpl
 import com.example.domain.util.Result
+import com.example.domain.util.TabsEnum
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -16,7 +17,7 @@ import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class GetMoviesUseCaseTest {
+class GetNowPlayingMoviesUseCaseTest {
 
     private lateinit var getNowPlayingMoviesUseCase: GetNowPlayingMoviesUseCase
     private val movieService: MovieService = mock()
@@ -31,12 +32,12 @@ class GetMoviesUseCaseTest {
     @Test
     fun `when the service return a success result`() {
         whenever(movieService.getNowPlayingMovies()).thenReturn(Result.Success(movieList))
-        whenever(database.getNowPlayingMovies()).thenReturn(Result.Success(movieList))
+        whenever(database.getMoviesByTab(TAB)).thenReturn(Result.Success(movieList))
 
         val result = getNowPlayingMoviesUseCase()
 
-        verify(database).updateNowPlayingMovies(movieList)
-        verify(database).getNowPlayingMovies()
+        verify(database).updateMovies(movieList)
+        verify(database).getMoviesByTab(TAB)
 
         Assert.assertEquals(movieList, (result as Result.Success).data)
     }
@@ -44,11 +45,11 @@ class GetMoviesUseCaseTest {
     @Test
     fun `when the service return a failure result and the database is empty`() {
         whenever(movieService.getNowPlayingMovies()).thenReturn(Result.Failure(Exception(NOT_FOUND)))
-        whenever(database.getNowPlayingMovies()).thenReturn(Result.Failure(Exception(NOT_FOUND)))
+        whenever(database.getMoviesByTab(TAB)).thenReturn(Result.Failure(Exception(NOT_FOUND)))
 
         val result = getNowPlayingMoviesUseCase()
 
-        verify(database).getNowPlayingMovies()
+        verify(database).getMoviesByTab(TAB)
 
         Assert.assertEquals(NOT_FOUND, (result as Result.Failure).exception.message)
     }
@@ -56,16 +57,17 @@ class GetMoviesUseCaseTest {
     @Test
     fun `when the service return a failure result and the database isn't empty`() {
         whenever(movieService.getNowPlayingMovies()).thenReturn(Result.Failure(Exception(NOT_FOUND)))
-        whenever(database.getNowPlayingMovies()).thenReturn(Result.Success(movieList))
+        whenever(database.getMoviesByTab(TAB)).thenReturn(Result.Success(movieList))
 
         val result = getNowPlayingMoviesUseCase()
 
-        verify(database).getNowPlayingMovies()
+        verify(database).getMoviesByTab(TAB)
 
         Assert.assertEquals(movieList, (result as Result.Success).data)
     }
 
     companion object {
         private const val NOT_FOUND = "NOT_FOUND"
+        private val TAB = TabsEnum.NOW_PLAYING
     }
 }
