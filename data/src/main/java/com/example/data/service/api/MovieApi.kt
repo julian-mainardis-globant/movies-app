@@ -10,4 +10,7 @@ interface MovieApi {
 
     @GET("/3/movie/top_rated")
     fun getTopRatedMovies(): Call<ResultResponse>
+
+    @GET("/3/movie/upcoming")
+    fun getUpcomingMovies(): Call<ResultResponse>
 }

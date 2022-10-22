@@ -12,4 +12,9 @@
     <dimen name="margin_cards_top_rated">10dp</dimen>
     <dimen name="top_rated_radius">10dp</dimen>
     <dimen name="margin_vote_average">10dp</dimen>
+    <dimen name="card_view_upcoming_layout_width">250dp</dimen>
+    <dimen name="card_view_upcoming_start_margin">25dp</dimen>
+    <dimen name="card_view_upcoming_vertical_margin">25dp</dimen>
+    <dimen name="card_view_upcoming_card_elevation">10dp</dimen>
+    <dimen name="card_view_upcoming_card_corner_radius">10dp</dimen>
 </resources>
