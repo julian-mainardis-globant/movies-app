@@ -1,6 +1,6 @@
 package com.example.data.database
 
-import com.example.data.service.util.Constants
+import com.example.data.service.util.Constants.NOT_FOUND
 import com.example.data.service.util.transformToLocalMoviesList
 import com.example.data.service.util.transformToMovieEntity
 import com.example.domain.database.MovieRepository
@@ -15,7 +15,7 @@ class MovieRepositoryImpl(private val movieDao: MovieDao) : MovieRepository {
             if (it.isNotEmpty()) {
                 Result.Success(it.transformToLocalMoviesList())
             } else {
-                Result.Failure(Exception(Constants.NOT_FOUND))
+                Result.Failure(Exception(NOT_FOUND))
             }
         }
 
