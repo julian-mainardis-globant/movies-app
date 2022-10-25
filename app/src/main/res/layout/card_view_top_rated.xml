@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/cardview_image_size"
     android:layout_marginVertical="@dimen/margin_cards_top_rated"
-    app:cardCornerRadius="@dimen/top_rated_radius">
+    android:layout_marginHorizontal="@dimen/margin_cards_top_rated"
+    app:cardCornerRadius="@dimen/margin_cards_top_rated">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,11 +26,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/top_rated_title_gradient"
-            android:ellipsize="end"
             android:maxLines="@integer/max_lines_top_rated"
+            android:textAlignment="textStart"
             android:paddingHorizontal="@dimen/padding_top_rated"
             android:paddingBottom="@dimen/padding_top_rated"
-            android:textAlignment="textStart"
             android:textSize="@dimen/title_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
             style="@style/text_view_card_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_vote_average"
+            android:layout_margin="@dimen/margin_cards_top_rated"
             android:background="@drawable/top_rated_vote_average_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

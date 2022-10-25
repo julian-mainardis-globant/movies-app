@@ -12,6 +12,9 @@ interface MovieDao {
     @Query("SELECT * FROM movie_table WHERE tab = :tabsEnum")
     fun getMoviesByTab(tabsEnum: TabsEnum): List<MovieEntity>
 
+    @Query("SELECT * FROM movie_table")
+    fun getMovies(): List<MovieEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovies(movieEntity: MovieEntity)
 }

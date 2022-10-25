@@ -2,6 +2,7 @@ package com.example.moviesapp.di
 
 import com.example.moviesapp.viewmodel.MainActivityViewModel
 import com.example.moviesapp.viewmodel.NowPlayingViewModel
+import com.example.moviesapp.viewmodel.SearchActivityViewModel
 import com.example.moviesapp.viewmodel.SplashScreenViewModel
 import com.example.moviesapp.viewmodel.TopRatedViewModel
 import com.example.moviesapp.viewmodel.UpcomingViewModel
@@ -15,5 +16,6 @@ object ViewModelModule {
         viewModel { NowPlayingViewModel(get()) }
         viewModel { UpcomingViewModel(get()) }
         viewModel { TopRatedViewModel(get()) }
+        viewModel { SearchActivityViewModel(get()) }
     }
 }

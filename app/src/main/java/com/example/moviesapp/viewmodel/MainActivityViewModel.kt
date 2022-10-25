@@ -13,11 +13,16 @@ class MainActivityViewModel : ViewModel() {
         mainActivityState.value = MainActivityData(MainActivityState.INITIALIZED)
     }
 
+    fun searchPressed() {
+        mainActivityState.value = MainActivityData(MainActivityState.SEARCH)
+    }
+
     data class MainActivityData(
         val state: MainActivityState
     )
 
     enum class MainActivityState {
-        INITIALIZED
+        INITIALIZED,
+        SEARCH
     }
 }

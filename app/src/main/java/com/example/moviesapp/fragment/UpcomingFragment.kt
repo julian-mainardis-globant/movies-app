@@ -16,7 +16,6 @@ import org.koin.android.ext.android.inject
 import org.koin.core.component.KoinComponent
 
 class UpcomingFragment : Fragment(), KoinComponent {
-
     private lateinit var binding: FragmentUpcomingBinding
     private val viewModel: UpcomingViewModel by inject()
 

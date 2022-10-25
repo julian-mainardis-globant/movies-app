@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity(), KoinComponent {
     private fun updateUI(mainActivityData: MainActivityViewModel.MainActivityData) {
         when (mainActivityData.state) {
             MainActivityViewModel.MainActivityState.INITIALIZED -> initialize()
+            MainActivityViewModel.MainActivityState.SEARCH ->
+                startActivity(SearchActivity.newInstance(this))
         }
     }
 
@@ -37,7 +39,13 @@ class MainActivity : AppCompatActivity(), KoinComponent {
         binding.viewPager.adapter = PageAdapter(this)
         val pageAdapter = binding.viewPager.adapter as PageAdapter
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.setIcon(arrayOf(R.drawable.ic_now_playing, R.drawable.ic_top_rated, R.drawable.ic_upcoming)[position])
+            tab.setIcon(
+                arrayOf(
+                    R.drawable.ic_now_playing,
+                    R.drawable.ic_top_rated,
+                    R.drawable.ic_upcoming
+                )[position]
+            )
             tab.text = pageAdapter.getPageTitle(position)
         }.attach()
     }
@@ -49,7 +57,7 @@ class MainActivity : AppCompatActivity(), KoinComponent {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.search -> {
-            // this will be implemented in the ticket "Search feature"
+            viewModel.searchPressed()
             true
         }
         else -> {
