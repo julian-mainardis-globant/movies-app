@@ -15,7 +15,6 @@ import com.example.moviesapp.viewmodel.NowPlayingViewModel
 import org.koin.android.ext.android.inject
 
 class NowPlayingFragment : Fragment() {
-
     private lateinit var binding: FragmentNowPlayingBinding
     private val viewModel: NowPlayingViewModel by inject()
 
@@ -45,7 +44,8 @@ class NowPlayingFragment : Fragment() {
     private fun showMovies(movieList: List<Movie>) {
         binding.nowPlayingLoader.visibility = View.GONE
         binding.nowPlayingImgEmptyState.visibility = View.GONE
-        binding.nowPlayingRecyclerView.layoutManager = GridLayoutManager(context, Constants.COLUMNS_AMOUNT)
+        binding.nowPlayingRecyclerView.layoutManager =
+            GridLayoutManager(context, Constants.COLUMNS_AMOUNT)
         binding.nowPlayingRecyclerView.adapter = NowPlayingAdapter(movieList)
     }
 

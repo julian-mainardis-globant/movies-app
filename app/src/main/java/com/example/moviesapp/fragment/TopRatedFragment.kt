@@ -14,7 +14,6 @@ import com.example.moviesapp.viewmodel.TopRatedViewModel
 import org.koin.android.ext.android.inject
 
 class TopRatedFragment : Fragment() {
-
     private lateinit var binding: FragmentTopRatedBinding
     private val viewModel: TopRatedViewModel by inject()
 

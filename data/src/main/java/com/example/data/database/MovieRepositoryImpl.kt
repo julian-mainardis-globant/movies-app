@@ -19,6 +19,15 @@ class MovieRepositoryImpl(private val movieDao: MovieDao) : MovieRepository {
             }
         }
 
+    override fun getMovies(): Result<List<Movie>> =
+        movieDao.getMovies().let {
+            if (it.isNotEmpty()) {
+                Result.Success(it.transformToLocalMoviesList())
+            } else {
+                Result.Failure(Exception(NOT_FOUND))
+            }
+        }
+
     override fun updateMovies(movies: List<Movie>) {
         movies.forEach {
             movieDao.insertMovies(it.transformToMovieEntity())

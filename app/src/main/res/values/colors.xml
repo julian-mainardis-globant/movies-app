@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_primary_color">#FF1D203F</color>
     <color name="app_secondary_color">#FF252A53</color>
-    <color name="status_bar_color">#3E3A92</color>
+    <color name="status_bar_color">#2F3567</color>
     <color name="tab_color">#B3FFFFFF</color>
     <color name="tab_color_pressed">#B3289DA1</color>
+    <color name="search_input_background">#40488A</color>
 </resources>

@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">MOVIES DB</string>
-    <string name="search_title">Search</string>
+    <string name="search_title">Movie searcher</string>
     <string name="movie_image">Movie Image</string>
     <string name="no_recording_image">No recording image</string>
-    <string name="empty_state_error">Something got wrong, please try again later</string>
+    <string name="empty_state_error">Something went wrong, please try again later</string>
+    <string name="search_tooltip_text">SEARCH BY TITLE NAME</string>
+    <string name="search_hint">Search</string>
 </resources>

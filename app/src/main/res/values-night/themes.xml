@@ -9,6 +9,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
         <item name="android:navigationBarColor">?attr/colorPrimary</item>
-        <item name="colorSurface">?attr/colorPrimary</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/white</item>
     </style>
 </resources>
