@@ -1,5 +1,6 @@
 package com.example.moviesapp.adapter
 
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.moviesapp.fragment.NowPlayingFragment
@@ -16,7 +17,7 @@ class PageAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int = NUMBER_OF_PAGES
 
-    override fun createFragment(position: Int) =
+    override fun createFragment(position: Int): Fragment =
         when (position) {
             FIRST_POSITION -> NowPlayingFragment.newInstance()
             SECOND_POSITION -> TopRatedFragment.newInstance()

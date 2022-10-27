@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.entity.Movie
 import com.example.moviesapp.R
+import com.example.moviesapp.adapter.MovieAdapterListener
 import com.example.moviesapp.adapter.TopRatedAdapter
 import com.example.moviesapp.databinding.FragmentTopRatedBinding
+import com.example.moviesapp.util.Constants
 import com.example.moviesapp.viewmodel.TopRatedViewModel
 import org.koin.android.ext.android.inject
 
-class TopRatedFragment : Fragment() {
+class TopRatedFragment : Fragment(), MovieAdapterListener {
     private lateinit var binding: FragmentTopRatedBinding
     private val viewModel: TopRatedViewModel by inject()
 
@@ -37,6 +40,7 @@ class TopRatedFragment : Fragment() {
             TopRatedViewModel.MovieState.RESPONSE_SUCCESS -> showMovies(movieData.data)
             TopRatedViewModel.MovieState.RESPONSE_ERROR -> showError()
             TopRatedViewModel.MovieState.RESPONSE_LOADING -> showLoading()
+            TopRatedViewModel.MovieState.MOVIE_PRESSED -> showMovieDetails(movieData.movieId)
         }
     }
 
@@ -44,7 +48,7 @@ class TopRatedFragment : Fragment() {
         binding.topRatedLoader.visibility = View.GONE
         binding.topRatedImgEmptyState.visibility = View.GONE
         binding.topRatedRecyclerView.layoutManager = LinearLayoutManager(context)
-        binding.topRatedRecyclerView.adapter = TopRatedAdapter(movieList)
+        binding.topRatedRecyclerView.adapter = TopRatedAdapter(movieList, this)
     }
 
     private fun showError() {
@@ -55,6 +59,16 @@ class TopRatedFragment : Fragment() {
 
     private fun showLoading() {
         binding.topRatedLoader.visibility = View.VISIBLE
+    }
+
+    private fun showMovieDetails(movieId: String) {
+        val movieDetailFragment = MovieDetailFragment.newInstance(movieId)
+        val fragmentManager: FragmentManager = parentFragmentManager
+        movieDetailFragment.show(fragmentManager, Constants.TAG)
+    }
+
+    override fun setOnClickListener(movieId: String) {
+        viewModel.onMoviePressed(movieId)
     }
 
     companion object {

@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 import com.example.domain.util.TabsEnum
 
 @Entity(tableName = "movie_table")
-class MovieEntity(
+data class MovieEntity(
     @PrimaryKey
     val id: String,
-    val title: String,
     val imgURL: String,
+    val title: String,
     val voteAverage: Float,
     val tab: TabsEnum
 )

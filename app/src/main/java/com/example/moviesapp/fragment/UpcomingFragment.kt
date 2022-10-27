@@ -5,17 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.entity.Movie
 import com.example.moviesapp.R
+import com.example.moviesapp.adapter.MovieAdapterListener
 import com.example.moviesapp.adapter.UpcomingAdapter
 import com.example.moviesapp.databinding.FragmentUpcomingBinding
+import com.example.moviesapp.util.Constants
 import com.example.moviesapp.viewmodel.UpcomingViewModel
 import org.koin.android.ext.android.inject
-import org.koin.core.component.KoinComponent
 
-class UpcomingFragment : Fragment(), KoinComponent {
+class UpcomingFragment : Fragment(), MovieAdapterListener {
     private lateinit var binding: FragmentUpcomingBinding
     private val viewModel: UpcomingViewModel by inject()
 
@@ -39,6 +41,7 @@ class UpcomingFragment : Fragment(), KoinComponent {
             UpcomingViewModel.MovieState.RESPONSE_SUCCESS -> showMovies(movieData.data)
             UpcomingViewModel.MovieState.RESPONSE_ERROR -> showError()
             UpcomingViewModel.MovieState.RESPONSE_LOADING -> showLoading()
+            UpcomingViewModel.MovieState.MOVIE_PRESSED -> showMovieDetails(movieData.movieId)
         }
     }
 
@@ -47,7 +50,7 @@ class UpcomingFragment : Fragment(), KoinComponent {
         binding.imgMain.visibility = View.GONE
         binding.upcomingHorizontalRecyclerView.layoutManager =
             LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        binding.upcomingHorizontalRecyclerView.adapter = UpcomingAdapter(movieList)
+        binding.upcomingHorizontalRecyclerView.adapter = UpcomingAdapter(movieList, this)
     }
 
     private fun showError() {
@@ -56,8 +59,18 @@ class UpcomingFragment : Fragment(), KoinComponent {
         binding.imgMain.setImageResource(R.drawable.no_recording)
     }
 
+    private fun showMovieDetails(movieId: String) {
+        val movieDetailFragment = MovieDetailFragment.newInstance(movieId)
+        val fragmentManager: FragmentManager = parentFragmentManager
+        movieDetailFragment.show(fragmentManager, Constants.TAG)
+    }
+
     private fun showLoading() {
         binding.loader.visibility = View.VISIBLE
+    }
+
+    override fun setOnClickListener(movieId: String) {
+        viewModel.onMoviePressed(movieId)
     }
 
     companion object {

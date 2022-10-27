@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.entity.Movie
 import com.example.domain.usecase.GetNowPlayingMoviesUseCase
+import com.example.domain.util.Constants.EMPTY_STRING
 import com.example.domain.util.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,14 +31,20 @@ class NowPlayingViewModel(private val getNowPlayingMoviesUseCase: GetNowPlayingM
         }
     }
 
+    fun onMoviePressed(movieId: String) {
+        movieState.value = MovieData(MovieState.MOVIE_PRESSED, movieId = movieId)
+    }
+
     data class MovieData(
         val state: MovieState,
-        val data: List<Movie> = emptyList()
+        val data: List<Movie> = emptyList(),
+        val movieId: String = EMPTY_STRING
     )
 
     enum class MovieState {
         RESPONSE_SUCCESS,
         RESPONSE_ERROR,
-        RESPONSE_LOADING
+        RESPONSE_LOADING,
+        MOVIE_PRESSED
     }
 }

@@ -13,7 +13,8 @@ import com.example.moviesapp.databinding.CardViewTopRatedBinding
 import com.example.moviesapp.util.Constants
 
 class TopRatedAdapter(
-    private val movies: List<Movie>
+    private val movies: List<Movie>,
+    private val listener: MovieAdapterListener
 ) : RecyclerView.Adapter<TopRatedAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,14 +28,14 @@ class TopRatedAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(movies[position])
+        holder.bind(movies[position], listener)
     }
 
     override fun getItemCount(): Int = movies.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = CardViewTopRatedBinding.bind(itemView)
-        fun bind(item: Movie) {
+        fun bind(item: Movie, listener: MovieAdapterListener) {
             binding.apply {
                 this.cardViewMovieNameTopRated.text = item.title
                 Glide.with(itemView.context)
@@ -42,6 +43,9 @@ class TopRatedAdapter(
                     .apply(RequestOptions.bitmapTransform(RoundedCorners(Constants.IMAGE_RADIUS)))
                     .into(this.cardViewImageMovieTopRated)
                 this.cardViewVoteAverageTopRated.text = item.voteAverage.toString()
+                binding.cardViewTopRated.setOnClickListener {
+                    listener.setOnClickListener(item.id)
+                }
             }
         }
     }

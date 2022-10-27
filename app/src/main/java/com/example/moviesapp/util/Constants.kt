@@ -9,4 +9,5 @@ object Constants {
     const val SECOND_POSITION = 1
     const val NUMBER_OF_PAGES = 3
     const val COLUMNS_AMOUNT = 3
+    const val TAG = "MOVIE_DETAIL_FRAGMENT"
 }
