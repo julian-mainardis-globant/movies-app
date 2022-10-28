@@ -17,7 +17,7 @@ import com.example.moviesapp.util.Constants.TAG
 import com.example.moviesapp.viewmodel.NowPlayingViewModel
 import org.koin.android.ext.android.inject
 
-class NowPlayingFragment: Fragment(), MovieAdapterListener {
+class NowPlayingFragment : Fragment(), MovieAdapterListener {
     private lateinit var binding: FragmentNowPlayingBinding
     private val viewModel: NowPlayingViewModel by inject()
 

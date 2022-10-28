@@ -42,6 +42,9 @@ class MovieDetailFragment : DialogFragment(), KoinComponent {
         movieDetail.let {
             binding.movieDetailLoader.visibility = View.GONE
             binding.movieDetailImgEmptyState.visibility = View.GONE
+            binding.movieDetailTagline.visibility = View.VISIBLE
+            binding.movieDetailReleaseDateText.visibility = View.VISIBLE
+            binding.movieVoteAverage.visibility = View.VISIBLE
             binding.apply {
                 movieDetailTitle.text = it?.title
                 movieDetailHomepage.text = it?.homepage

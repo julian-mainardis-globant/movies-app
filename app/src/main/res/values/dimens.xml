@@ -22,4 +22,7 @@
     <dimen name="search_input_margin">35dp</dimen>
     <dimen name="top_rated_radius">50dp</dimen>
     <dimen name="detail_fragment_padding">10dp</dimen>
+    <dimen name="translation_z_dimen">1dp</dimen>
+    <dimen name="end_padding_toolbar">40dp</dimen>
+    <dimen name="margin_start_title">35dp</dimen>
 </resources>
