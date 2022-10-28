@@ -16,6 +16,6 @@ interface MovieApi {
     @GET("/3/movie/upcoming")
     fun getUpcomingMovies(): Call<ResultResponse>
 
-    @GET("/3/movie/movieId")
+    @GET("/3/movie/{movieId}")
     fun getMovieDetailById(@Path("movieId") movieId: String): Call<MovieDetailResponse>
 }

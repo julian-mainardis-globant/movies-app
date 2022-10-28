@@ -46,7 +46,11 @@ class MovieDetailFragment : DialogFragment(), KoinComponent {
                 movieDetailTitle.text = it?.title
                 movieDetailHomepage.text = it?.homepage
                 movieDetailOverview.text = it?.overview
-                movieDetailTagline.text = it?.tagline
+                if (it?.tagline.isNullOrEmpty()) {
+                    this.movieDetailTagline.visibility = View.GONE
+                } else {
+                    movieDetailTagline.text = it?.tagline
+                }
                 movieDetailReleaseDate.text = it?.releaseDate
                 movieVoteAverage.text = it?.voteAverage.toString()
                 movieDetailGenres.text = it?.genres.toString()

@@ -54,7 +54,7 @@ fun MovieDetailResponse.transformToLocalMovieDetail() =
         genres = this.genres.getListOfNames(),
         id = this.id,
         overview = this.overview,
-        imgURL = this.imgPath,
+        imgURL = this.getImg(),
         releaseDate = this.releaseDate,
         tagline = this.tagline,
         title = this.title,
@@ -96,3 +96,5 @@ fun MovieDetailEntity.transformToLocalMovieDetail() =
     )
 
 fun MovieResponse.getImgURL() = "${Constants.BASE_URL_IMG}${this.imgPath}"
+
+fun MovieDetailResponse.getImg() = "${Constants.BASE_URL_IMG}${this.imgPath}"
