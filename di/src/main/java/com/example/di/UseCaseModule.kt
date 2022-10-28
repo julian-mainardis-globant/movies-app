@@ -1,5 +1,7 @@
 package com.example.di
 
+import com.example.domain.usecase.GetMovieDetailUseCase
+import com.example.domain.usecase.GetMovieDetailsUseCaseImpl
 import com.example.domain.usecase.GetNowPlayingMoviesUseCase
 import com.example.domain.usecase.GetNowPlayingMoviesUseCaseImpl
 import com.example.domain.usecase.GetTopRatedMoviesUseCase
@@ -13,5 +15,6 @@ object UseCaseModule {
         factory<GetNowPlayingMoviesUseCase> { GetNowPlayingMoviesUseCaseImpl(get(), get()) }
         factory<GetTopRatedMoviesUseCase> { GetTopRatedMoviesUseCaseImpl(get(), get()) }
         factory<GetUpcomingMoviesUseCase> { GetUpcomingMoviesUseCaseImpl(get(), get()) }
+        factory<GetMovieDetailUseCase> { GetMovieDetailsUseCaseImpl(get(), get()) }
     }
 }
